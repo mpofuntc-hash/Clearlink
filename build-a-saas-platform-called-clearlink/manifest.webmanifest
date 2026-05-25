@@ -1,0 +1,19 @@
+{
+  "name": "Clearlink Private Service Ecosystem",
+  "short_name": "Clearlink",
+  "description": "Role-based contracted property services with compliance, mobile capture, offline sync, billing, and audit trails.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#edf6fc",
+  "theme_color": "#08213f",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#08213f"/>
+  <path d="M104 286c44-84 96-126 152-126s108 42 152 126" fill="none" stroke="#62b7f4" stroke-width="42" stroke-linecap="round"/>
+  <path d="M128 318h256" stroke="#0eaaa2" stroke-width="42" stroke-linecap="round"/>
+  <text x="256" y="264" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="96" font-weight="800" fill="#ffffff">CL</text>
+</svg>

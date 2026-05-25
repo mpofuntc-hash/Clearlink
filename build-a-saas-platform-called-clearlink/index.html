@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clearlink | Private Service Ecosystem</title>
+  <meta name="theme-color" content="#08213f">
+  <meta name="description" content="Clearlink private service ecosystem for contracted property services, offline mobile capture, compliance, billing, and audit trails.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="login-shell" id="landingPage">
+    <div class="login-brand-panel">
+      <a class="brand login-brand" href="#" aria-label="Clearlink">
+        <span class="brand-mark">CL</span>
+        <span>
+          <strong>Clearlink</strong>
+          <small>Private service ecosystem</small>
+        </span>
+      </a>
+      <span class="pill">MVP Architecture</span>
+      <h1>Contracted service operations for properties and vetted providers.</h1>
+      <p>Clearlink keeps job cards, access permissions, compliance, incidents, contracts, billing, invoices, and audit trails locked to one private platform.</p>
+      <div class="login-metrics">
+        <div><strong>15%</strong><span>Commission per completed job card</span></div>
+        <div><strong>R1.5k+</strong><span>Monthly retainers by client size</span></div>
+        <div><strong>PWA</strong><span>Mobile install with offline capture</span></div>
+      </div>
+    </div>
+
+    <form class="auth-card" id="loginForm">
+      <span class="eyebrow">Role-based login</span>
+      <div class="role-tabs" role="group" aria-label="Choose account type">
+        <button class="auth-tab active" type="button" data-auth-role="client">Client</button>
+        <button class="auth-tab" type="button" data-auth-role="provider">Service Provider</button>
+      </div>
+
+      <div class="auth-section" id="clientAuth">
+        <label class="field">
+          <span>Client type</span>
+          <select id="clientTypeSelect">
+            <option>Guest House</option>
+            <option>Apartment</option>
+            <option>Casino</option>
+            <option>Old Age Home</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Hierarchy role</span>
+          <select id="clientHierarchySelect">
+            <option value="executive">Shareholder/Executive</option>
+            <option value="manager">Manager/Supervisor</option>
+            <option value="worker">General Worker</option>
+          </select>
+        </label>
+        <div class="login-note">
+          <strong>Client dashboard</strong>
+          <span>Unified compliance, incidents, job cards, access control, billing, renewals, contract tracking, and hierarchy visibility across every contracted service.</span>
+        </div>
+      </div>
+
+      <div class="auth-section hidden" id="providerAuth">
+        <span class="field-label">Service categories</span>
+        <div class="category-grid login-category-grid" id="providerCategoryChoices"></div>
+        <label class="field">
+          <span>Hierarchy role</span>
+          <select id="providerHierarchySelect">
+            <option value="executive">Owner/Shareholder</option>
+            <option value="manager">Manager/Supervisor</option>
+            <option value="worker">General Worker</option>
+          </select>
+        </label>
+        <div class="login-note">
+          <strong>Provider dashboard</strong>
+          <span>Modules adapt to selected categories, allowing single-service and multi-service providers to operate from one workspace.</span>
+        </div>
+      </div>
+
+      <div class="demo-row" aria-label="Soft launch demo accounts">
+        <button class="secondary-button demo-button" type="button" data-demo="client">Sample client</button>
+        <button class="secondary-button demo-button" type="button" data-demo="provider">Sample provider</button>
+      </div>
+
+      <button class="primary-button login-button" id="loginButton" type="submit">
+        <span class="nav-icon" data-icon="dashboard"></span>
+        Enter Client Dashboard
+      </button>
+    </form>
+  </section>
+
+  <div class="app-shell app-hidden" id="appShell">
+    <aside class="sidebar" aria-label="Clearlink workspace navigation">
+      <a class="brand" href="#overview" aria-label="Clearlink dashboard">
+        <span class="brand-mark">CL</span>
+        <span>
+          <strong>Clearlink</strong>
+          <small id="accountModeLabel">Client workspace</small>
+        </span>
+      </a>
+
+      <div class="property-switcher">
+        <span class="eyebrow">Active account</span>
+        <button class="property-button" id="propertyButton" type="button">
+          <span id="activeAccountName">Harbour View Guest House</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+        </button>
+        <div class="property-menu" id="propertyMenu">
+          <button type="button" data-property="Harbour View Guest House">Harbour View Guest House</button>
+          <button type="button" data-property="Blue Gum Apartments">Blue Gum Apartments</button>
+          <button type="button" data-property="Atlantic Casino Resort">Atlantic Casino Resort</button>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <button class="nav-item active" type="button" data-page="overview">
+          <span class="nav-icon" data-icon="dashboard"></span>
+          Overview
+        </button>
+        <button class="nav-item" type="button" data-page="jobcards">
+          <span class="nav-icon" data-icon="workflow"></span>
+          Job Cards
+        </button>
+        <button class="nav-item" type="button" data-page="access">
+          <span class="nav-icon" data-icon="lock"></span>
+          Access Control
+        </button>
+        <button class="nav-item" type="button" data-page="compliance">
+          <span class="nav-icon" data-icon="shield"></span>
+          Compliance
+        </button>
+        <button class="nav-item" type="button" data-page="incidents">
+          <span class="nav-icon" data-icon="alert"></span>
+          Incidents
+        </button>
+        <button class="nav-item" type="button" data-page="billing">
+          <span class="nav-icon" data-icon="wallet"></span>
+          Billing
+        </button>
+        <button class="nav-item" type="button" data-page="mobile">
+          <span class="nav-icon" data-icon="camera"></span>
+          Mobile Capture
+        </button>
+        <button class="nav-item" type="button" data-page="provider">
+          <span class="nav-icon" data-icon="briefcase"></span>
+          Provider Tools
+        </button>
+        <button class="nav-item" type="button" data-page="audit">
+          <span class="nav-icon" data-icon="document"></span>
+          Audit Trail
+        </button>
+        <button class="nav-item" type="button" data-page="feedback">
+          <span class="nav-icon" data-icon="message"></span>
+          Feedback
+        </button>
+      </nav>
+
+      <div class="bridge-card">
+        <div class="bridge-visual" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <strong>Contract locked</strong>
+        <p>Job cards, access rules, invoices, compliance standards, and audit records stay tied to each signed contract.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow" id="workspaceEyebrow">Private Clearlink workspace</span>
+          <h1 id="pageTitle">Client Dashboard</h1>
+        </div>
+        <div class="topbar-actions">
+          <label class="role-picker">
+            <span>Mode</span>
+            <select id="roleSelect">
+              <option value="client">Client</option>
+              <option value="provider">Service Provider</option>
+            </select>
+          </label>
+          <label class="role-picker">
+            <span>Access</span>
+            <select id="accessRoleSelect">
+              <option value="executive">Executive</option>
+              <option value="manager">Manager/Supervisor</option>
+              <option value="worker">General Worker</option>
+            </select>
+          </label>
+          <span class="mode-chip" id="categorySummary">All contracted services</span>
+          <span class="mode-chip" id="syncStatus">Online sync ready</span>
+          <button class="secondary-button" id="backToLogin" type="button">Switch login</button>
+          <button class="primary-button" type="button">
+            <span class="nav-icon" data-icon="plus"></span>
+            New job card
+          </button>
+        </div>
+      </header>
+
+      <section class="identity-band">
+        <div class="identity-copy">
+          <span class="pill">Private Clearlink Partner Network</span>
+          <h2 id="workspaceHeadline">Unified compliance and billing across all contracted services.</h2>
+          <p id="workspaceCopy">Clients see one control center for properties, service categories, contracts, access permissions, incidents, invoices, retainers, commissions, and audit history.</p>
+        </div>
+        <div class="identity-graphic" aria-label="Clearlink platform connection diagram">
+          <div class="node house">
+            <span class="node-icon">CL</span>
+            <strong id="leftNodeTitle">Client</strong>
+            <small id="leftNodeCopy">Guest House / Apartment / Casino / Old Age Home</small>
+          </div>
+          <div class="bridge-line"><span></span></div>
+          <div class="node clearlink">
+            <span class="node-icon">CL</span>
+            <strong>Clearlink</strong>
+            <small>Contracts, audit, billing</small>
+          </div>
+          <div class="bridge-line"><span></span></div>
+          <div class="node cleaners">
+            <span class="node-icon">SP</span>
+            <strong id="rightNodeTitle">Service Provider</strong>
+            <small id="rightNodeCopy">Vetted category specialists</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="role-context" id="modeContext"></section>
+
+      <section class="page active" id="overview" data-title-client="Client Dashboard" data-title-provider="Service Provider Dashboard">
+        <div class="stats-grid" id="overviewStats"></div>
+
+        <div class="content-grid">
+          <article class="panel wide">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow" id="overviewPanelEyebrow">Unified client view</span>
+                <h3 id="overviewPanelTitle">Compliance across all contracted services</h3>
+              </div>
+              <button class="secondary-button" type="button">Export MVP report</button>
+            </div>
+            <div class="status-board" id="overviewBoard"></div>
+          </article>
+
+          <aside class="panel">
+            <div class="panel-header compact">
+              <div>
+                <span class="eyebrow">Contract billing model</span>
+                <h3>Hybrid revenue</h3>
+              </div>
+            </div>
+            <div class="whatsapp-list">
+              <div class="whatsapp-alert"><strong>Monthly retainer</strong><span>Client retainers scale by property size and contracted service mix.</span><small>Recurring</small></div>
+              <div class="whatsapp-alert"><strong>Client tiers</strong><span>Small R1,500-R3,000, mid-tier R2,500-R5,000, large R7,500-R15,000 per month.</span><small>By size</small></div>
+              <div class="whatsapp-alert"><strong>Completed job card</strong><span>15% commission is applied after client approval.</span><small>Per job</small></div>
+              <div class="whatsapp-alert"><strong>Invoice lock</strong><span>Invoices reference contract, job card, and compliance score.</span><small>Auditable</small></div>
+            </div>
+          </aside>
+        </div>
+
+        <article class="panel architecture-panel">
+          <div class="panel-header">
+            <div>
+              <span class="eyebrow">MVP integration architecture</span>
+              <h3>Contracts connect every operational surface</h3>
+            </div>
+          </div>
+          <div class="architecture-grid">
+            <div><strong>Job card contract link</strong><span>Every task definition, priority, attachment, provider, and approval is stored against the active contract.</span></div>
+            <div><strong>Access control link</strong><span>Property zones and provider permissions are contract-scoped so access can be granted, revoked, and audited.</span></div>
+            <div><strong>Billing link</strong><span>Monthly retainers and 15% commissions are generated from contract terms and completed job-card approvals.</span></div>
+            <div><strong>Audit link</strong><span>Compliance events, incidents, access changes, invoice records, and corrective actions create one transparent trail.</span></div>
+            <div><strong>PWA + offline link</strong><span>Workers can install Clearlink on mobile, capture notes/photos offline, store locally, and sync when connectivity returns.</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="page" id="jobcards" data-title-client="Customizable Job Cards" data-title-provider="Assigned Job Cards">
+        <div class="split-layout">
+          <article class="panel wide">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">What, where, how</span>
+                <h3>Custom job-card builder tied to contract standards</h3>
+              </div>
+              <button class="primary-button" type="button">Save job card</button>
+            </div>
+            <div class="job-builder">
+              <label class="field"><span>What</span><input value="Deep clean public lobby tiles"></label>
+              <label class="field"><span>Where</span><input value="Main entrance, reception, lift lobby"></label>
+              <label class="field"><span>How</span><textarea>Use approved non-slip detergent, wet-floor signage, and photo proof after drying.</textarea></label>
+              <label class="field"><span>Priority</span><select><option>High</option><option>Standard</option><option>Low</option></select></label>
+              <label class="field"><span>Notes</span><textarea>Coordinate with front desk before 07:00. Avoid blocking casino VIP entrance.</textarea></label>
+              <label class="field attachment-field"><span>Attachments</span><input type="file" multiple accept="image/*,.pdf,.doc,.docx"></label>
+            </div>
+          </article>
+          <aside class="panel">
+            <span class="eyebrow">Active contract job cards</span>
+            <div class="job-list compact-list" id="jobCardList"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="access" data-title-client="Access Control" data-title-provider="Access Permissions">
+        <div class="content-grid">
+          <article class="panel wide">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">Property zones</span>
+                <h3>Client-defined access permissions by service provider</h3>
+              </div>
+              <button class="secondary-button" type="button">Update permissions</button>
+            </div>
+            <div class="zone-grid" id="zoneList"></div>
+          </article>
+          <aside class="panel">
+            <span class="eyebrow">Access rules</span>
+            <div class="access-rule"><strong>Rooms</strong><span>General Cleaning only, 08:00-14:00, supervisor sign-in required.</span></div>
+            <div class="access-rule"><strong>Pool</strong><span>Pool Cleaning team, chemical logs required before closure.</span></div>
+            <div class="access-rule"><strong>Roof</strong><span>Gutter/Roof team, safety clearance and weather check required.</span></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="compliance" data-title-client="Compliance Tracking" data-title-provider="Compliance Feedback">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="eyebrow">Contract standards</span>
+              <h3>Task completion measured across every service category</h3>
+            </div>
+            <button class="secondary-button" type="button">Download compliance pack</button>
+          </div>
+          <div class="table compliance-table" id="complianceTable"></div>
+        </article>
+      </section>
+
+      <section class="page" id="incidents" data-title-client="Incident Reporting" data-title-provider="Incident Management">
+        <div class="split-layout">
+          <article class="panel wide">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">Incident hub</span>
+                <h3>Log, escalate, and resolve service-category issues</h3>
+              </div>
+              <button class="primary-button" type="button">Escalate to provider</button>
+            </div>
+            <div class="incident-form">
+              <label class="field"><span>Category</span><select id="incidentCategorySelect"></select></label>
+              <label class="field"><span>Issue</span><input value="Steam-cleaned carpet still marked near reception"></label>
+              <label class="field"><span>Resolution target</span><select><option>Same day</option><option>48 hours</option><option>Next scheduled visit</option></select></label>
+              <label class="field"><span>Corrective action</span><textarea>Provider to inspect stain, add photo evidence, and update corrective action log.</textarea></label>
+            </div>
+          </article>
+          <aside class="panel">
+            <span class="eyebrow">Open incidents</span>
+            <div class="compact-list" id="incidentList"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="billing" data-title-client="Billing & Contracts" data-title-provider="Payouts & Contracts">
+        <div class="stats-grid">
+          <article class="stat-card"><span>Small retainer</span><strong>R1.5k-R3k</strong><small>Guest houses and small apartments</small></article>
+          <article class="stat-card sky"><span>Mid-tier retainer</span><strong>R2.5k-R5k</strong><small>Apartments and medium sites</small></article>
+          <article class="stat-card teal"><span>Large retainer</span><strong>R7.5k-R15k</strong><small>Casinos, estates, old age homes</small></article>
+          <article class="stat-card navy"><span>Provider commission</span><strong>15%</strong><small>Per completed job card</small></article>
+        </div>
+        <div class="stats-grid compact-stats">
+          <article class="stat-card sky"><span>Commission</span><strong>15%</strong><small>Per completed job card</small></article>
+          <article class="stat-card teal"><span>Renewals</span><strong>4</strong><small>Contracts due this quarter</small></article>
+          <article class="stat-card navy"><span>Invoices</span><strong>28</strong><small>Linked to compliance</small></article>
+        </div>
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="eyebrow">Automated invoices</span>
+              <h3>Invoices connect job cards, contracts, and compliance metrics</h3>
+            </div>
+            <button class="secondary-button" type="button">Generate billing run</button>
+          </div>
+          <div class="table" id="billingTable"></div>
+        </article>
+      </section>
+
+      <section class="page" id="mobile" data-title-client="Mobile Capture & Offline Mode" data-title-provider="Mobile Capture & Offline Mode">
+        <div class="split-layout">
+          <article class="panel wide">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">Worker mobile module</span>
+                <h3>Capture evidence offline, geo-tag it, and sync automatically</h3>
+              </div>
+              <button class="primary-button" id="saveOfflineCapture" type="button">Save offline update</button>
+            </div>
+            <div class="job-builder">
+              <label class="field"><span>Job card / incident</span><select id="captureTarget"><option>JC-1042 - Rooms 11-14</option><option>INC-310 - Reception stain</option><option>JC-1088 - Pool filter</option></select></label>
+              <label class="field"><span>Capture photo</span><input id="capturePhoto" type="file" accept="image/*" capture="environment"></label>
+              <label class="field"><span>Geo-tag metadata</span><input id="geoField" value="Waiting for location"></label>
+              <label class="field"><span>Offline note</span><textarea id="offlineNote">Photo proof captured on site. Checklist updated while offline.</textarea></label>
+            </div>
+            <div class="mobile-actions">
+              <button class="secondary-button" id="geoButton" type="button">Attach current location</button>
+              <button class="secondary-button" id="syncButton" type="button">Sync offline queue</button>
+            </div>
+          </article>
+          <aside class="panel">
+            <span class="eyebrow">Local offline queue</span>
+            <div class="offline-status-card">
+              <strong id="offlineQueueCount">0 pending updates</strong>
+              <span>Stored locally until internet access is restored.</span>
+            </div>
+            <div class="compact-list" id="offlineQueueList"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="provider" data-title-client="Provider Network View" data-title-provider="Dynamic Provider Tools">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <span class="eyebrow">Category-specific operations</span>
+              <h3 id="providerToolsTitle">Provider dashboard adapts to selected service categories</h3>
+            </div>
+            <span class="mode-chip" id="providerCountChip">0 categories</span>
+          </div>
+          <div class="provider-grid" id="providerCategoryPanels"></div>
+        </article>
+      </section>
+
+      <section class="page" id="audit" data-title-client="Audit Trail" data-title-provider="Audit Trail">
+        <div class="content-grid">
+          <article class="panel wide">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">Transparent audit trail</span>
+                <h3>Every category action remains contract-visible</h3>
+              </div>
+              <button class="secondary-button" type="button">Export audit log</button>
+            </div>
+            <div class="audit-list" id="auditList"></div>
+          </article>
+          <aside class="panel document-card">
+            <span class="eyebrow">Anti-bypass architecture</span>
+            <h3>Platform accountability by design</h3>
+            <p>Access rules, incident escalations, compliance scores, invoices, retainer fees, and 15% commissions are referenced to signed contracts and completed job cards.</p>
+            <div class="signature-line">Contract, billing, compliance, and audit trail locked</div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="feedback" data-title-client="Soft Launch Feedback" data-title-provider="Soft Launch Feedback">
+        <div class="content-grid">
+          <article class="panel wide">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">Demo and testing</span>
+                <h3>Feedback capture for soft-launch testers</h3>
+              </div>
+              <button class="primary-button" id="submitFeedback" type="button">Submit feedback</button>
+            </div>
+            <div class="incident-form">
+              <label class="field"><span>Demo account</span><select id="feedbackAccount"><option>Sample client - Harbour View</option><option>Sample provider - BlueWave</option></select></label>
+              <label class="field"><span>Testing area</span><select><option>Mobile capture</option><option>Compliance dashboard</option><option>Billing and contracts</option><option>Provider category tools</option></select></label>
+              <label class="field"><span>Impression</span><textarea id="feedbackText">Dashboard is clear. Test offline capture and sync before rollout.</textarea></label>
+              <label class="field"><span>Readiness</span><select><option>Needs tweaks</option><option>Ready for pilot</option><option>Blocked</option></select></label>
+            </div>
+          </article>
+          <aside class="panel">
+            <span class="eyebrow">Captured tester feedback</span>
+            <div class="compact-list" id="feedbackList"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
